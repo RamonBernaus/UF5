@@ -8,9 +8,9 @@ package practica1_uf5;
  * @author ramon
  */
 public class Ex2 {
-    public static void main(String[] args) {
-        Figura f = new Figura(costats);
-        f.CreacioFigura();
+
+    public static void main(String[] args) throws Exception {
+        Figura f = new Figura(4, 1, 2, 3, 4);
+        System.out.println("El Perimetre = " + f.Perimetre(4, 1, 2, 3, 4));
     }
 }
-
