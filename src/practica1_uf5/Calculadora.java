@@ -13,19 +13,84 @@ import java.util.Scanner;
  */
 public class Calculadora {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Calculadora();
     }
 
-    public static int Calculadora() {
+    public static int Calculadora() throws Exception {
+        int resultat = 0, operador1, operador2;
+        boolean comprovar = true;
+        String simbol = null;
         Scanner s = new Scanner(System.in);
-        System.out.println("Dona la operacio que vols fer (+,-,*,/)");
-        String simbol = s.nextLine();
-        System.out.println("Quin es el primer valor?");
-        int operador1 = s.nextInt();
-        System.out.println("Quin es el segon valor?");
-        int operador2 = s.nextInt();
-
-        return 0;
+        while (comprovar) {
+            System.out.println("Dona la operacio que vols fer (+,-,*,/) o Z per a finalitzar");
+            s.nextLine();
+            simbol = s.nextLine();
+            switch (simbol) {
+                case "+":
+                    try {
+                    System.out.print("Quin es el primer valor? ");
+                    operador1 = Integer.parseInt(s.next());
+                    System.out.print("Quin es el segon valor? ");
+                    operador2 = Integer.parseInt(s.next());
+                    resultat = operador1 + operador2;
+                    System.out.println("El resultat de l'operacio es : " + resultat);
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("NumberFormatException occured");
+                    System.out.println("Torna-ho a probar");
+                }
+                case "-":
+                    try {
+                    System.out.print("Quin es el primer valor? ");
+                    operador1 = Integer.parseInt(s.next());
+                    System.out.print("Quin es el segon valor? ");
+                    operador2 = Integer.parseInt(s.next());
+                    resultat = operador1 - operador2;
+                    System.out.println("El resultat de l'operacio es : " + resultat);
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("NumberFormatException occured");
+                    System.out.println("Torna-ho a probar");
+                }
+                case "*":
+                    try {
+                    System.out.print("Quin es el primer valor? ");
+                    operador1 = Integer.parseInt(s.next());
+                    System.out.print("Quin es el segon valor? ");
+                    operador2 = Integer.parseInt(s.next());
+                    resultat = operador1 * operador2;
+                    System.out.println("El resultat de l'operacio es : " + resultat);
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("NumberFormatException occured");
+                    System.out.println("Torna-ho a probar");
+                }
+                case "/":
+                    try {
+                    System.out.print("Quin es el primer valor? ");
+                    operador1 = Integer.parseInt(s.next());
+                    System.out.print("Quin es el segon valor? ");
+                    operador2 = Integer.parseInt(s.next());
+                    try {
+                        resultat = operador1 / operador2;
+                        System.out.println("El resultat de l'operacio es : " + resultat);
+                        break;
+                    } catch (ArithmeticException e) {
+                        System.out.println("ArithmeticException occured");
+                        System.out.println("La divisio es entre zero");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("NumberFormatException occured");
+                    System.out.println("Torna-ho a probar");
+                }
+                case "Z":
+                    comprovar = false;
+                    break;
+                default:
+                    throw new Exception("L'operador no existeix, torna-ho a probar");
+            }
+        }
+        return resultat;
     }
 }
